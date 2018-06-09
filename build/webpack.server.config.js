@@ -7,7 +7,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 const config = Object.assign({}, base, {
     target: 'node',
-    entry: './client/server_entry.js',
+    entry: './client/entry_server.js',
     output: Object.assign({}, base.output, {
         libraryTarget: 'commonjs2',
     }),
@@ -24,7 +24,6 @@ const config = Object.assign({}, base, {
 })
 
 if (!isProduction) {
-    console.error('Should be some notify here too')
     config.plugins.push(
         // new ExtractTextPlugin('styles.css'),
         // new webpack.HotModuleReplacementPlugin(),

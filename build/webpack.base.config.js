@@ -14,7 +14,6 @@ const isProduction = process.env.NODE_ENV === 'production'
 let config = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: {
-        // app: './client/main.js',
         vendor: ['vue', 'vuex', 'vue-router'],
     },
     output: {
@@ -31,7 +30,7 @@ let config = {
             },
             {
                 test: /\.less$/,
-                use: ['vue-style-loader', 'style-loader', 'css-loader', 'less-loader'],
+                use: ['vue-style-loader', 'css-loader', 'less-loader'],
             },
             {
                 test: /\.vue$/,
@@ -50,6 +49,7 @@ let config = {
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
     ],
+    optimization: {},
 }
 
 if (process.env.NODE_ENV === 'production') {

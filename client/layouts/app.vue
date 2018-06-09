@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// import '../styles/global.scss'
+import '../styles/global.less'
 export default {
 }
 

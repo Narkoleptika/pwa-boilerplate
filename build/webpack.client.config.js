@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 const config = Object.assign({}, base, {
     entry: {
-        app: './client/client_entry.js',
+        app: './client/entry_client.js',
         vendor: ['vue', 'vuex', 'vue-router'],
     },
     plugins: (base.plugins || []).concat([

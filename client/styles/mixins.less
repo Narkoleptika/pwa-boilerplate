@@ -1,0 +1,27 @@
+.desktop(@content) {
+    @media screen and (min-width: 414px) {
+        @content();
+    }
+}
+
+.tablet(@content) {
+    @media screen and (max-width: 1028px) {
+        @content();
+    }
+}
+
+.mobile(@content) {
+    @media screen and (max-width: 414px) {
+        @content();
+    }
+}
+
+// FIXME not yet working
+// .tablet_mobile(@content) {
+//     .tablet() {
+//         @content();
+//     }
+//     .mobile() {
+//         @content();
+//     }
+// }

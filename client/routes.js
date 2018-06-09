@@ -9,7 +9,7 @@ const fourOhFour = loadPage('fourohfour')
 
 const routes = [
     {path: '/', component: defaultLayout, children: [
-        {path: '/home', component: home, name: 'home'},
+        {path: '/', component: home, name: 'home'},
         {path: '/404', component: fourOhFour},
     ]},
     {path: '/', component: defaultLayout, children: [

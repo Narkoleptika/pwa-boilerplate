@@ -24,8 +24,8 @@ export default {
     methods: {
         dismissError() {
             this.$store.dispatch('dismissError')
-        }
-    }
+        },
+    },
 }
 </script>
 

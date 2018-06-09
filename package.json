@@ -4,8 +4,10 @@
     "description": "Boilerplate for a modern PWA",
     "main": "index.js",
     "scripts": {
-        "pack": "NODE_ENV=development webpack --config build/webpack.base.config.js --watch",
-        "pack-production": "NODE_ENV=production webpack --config build/webpack.config.js --progress"
+        "dev": "NODE_ENV=development node frontend_server/serve_frontend.js",
+        "production": "NODE_ENV=production node frontend_server/serve_frontend.js",
+        "pack-client-production": "NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
+        "pack-server-production": "NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
     },
     "keywords": [],
     "author": "",
@@ -32,7 +34,6 @@
         "less": "^3.0.4",
         "less-loader": "^4.1.0",
         "spdy": "^3.4.7",
-        "style-loader": "^0.21.0",
         "sw-precache-webpack-plugin": "^0.11.5",
         "vue": "^2.5.16",
         "vue-loader": "^15.2.4",

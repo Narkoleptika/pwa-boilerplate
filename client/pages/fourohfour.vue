@@ -6,5 +6,10 @@
 
 <script>
 export default {
+    meta() {
+        return {
+            title: 'Error 404 - Page not found',
+        }
+    },
 }
 </script>

@@ -3,6 +3,10 @@ import Vue from 'vue'
 import App from './layouts/app.vue'
 import createStore from './store.js'
 import createRouter from './routes.js'
+import meta from './utils/meta.js'
+const siteName = 'My Site'
+
+Vue.mixin(meta(siteName))
 
 export default () => {
     const store = createStore()
