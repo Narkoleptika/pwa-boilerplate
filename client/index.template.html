@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FIXME TITLE</title>
+        
+        FIXME DESCRIPTION
+        <meta property="og:title" content="{{meta.title}}">
+        <meta property="og:description" content="{{meta.description}}">
+        <!-- <meta property="og:image" content="{{meta.card}}"> -->
+        <meta property="og:url" content="{{ fullUrl }}">
+        <meta name="twitter:card" content="summary_large_image">
+        FIXME ROBOTS
+
+        <meta name="author" content="Brian Whicheloe">
+        <link rel="shortcut icon" href="/icons/favicon.ico" id="favicon">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#4e4e4e" id="theme_color">
+        <meta name="msapplication-TileColor" content="#ffc40d">
+        <meta name="msapplication-TileImage" content="/icons/w_168.png">
+
+        {{{ renderStyles() }}}
+    </head>
+    <body>
+        <!--vue-ssr-outlet-->
+
+        {{{ renderState() }}}
+        {{{ renderScripts() }}}
+        <!-- TODO move these styles somewhere else and figure out font loading somehow else -->
+        <style>
+            /* To update these or get more versions use https://google-webfonts-helper.herokuapp.com/fonts */
+            /* lato-regular - latin */
+            @font-face {
+              font-family: 'Lato';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Lato Regular'), local('Lato-Regular'),
+                   url('/fonts/lato-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+                   url('/fonts/lato-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+            }
+            /* lato-700 - latin */
+            @font-face {
+              font-family: 'Lato';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Lato Bold'), local('Lato-Bold'),
+                   url('/fonts/lato-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+                   url('/fonts/lato-v14-latin-700.woff') format('woff'), /* Modern Browsers */
+            }
+            /* lato-900 - latin */
+            @font-face {
+              font-family: 'Lato';
+              font-style: normal;
+              font-weight: 900;
+              src: local('Lato Black'), local('Lato-Black'),
+                   url('/fonts/lato-v14-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+                   url('/fonts/lato-v14-latin-900.woff') format('woff'), /* Modern Browsers */
+            }
+        </style>
+    </body>
+</html>
