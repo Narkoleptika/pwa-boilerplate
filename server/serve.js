@@ -5,21 +5,25 @@ const spdy = require('spdy')
 const helmet = require('helmet')
 const expressStaticGzip = require('express-static-gzip')
 const app = express()
-const port = 3015
+const {frontendPort} = require('../config.js')
 const bodyParser = require('body-parser')
 
+// Create an HTTP2 compatible server.
+// Express currently doesn't support the core HTTP2, but keep an eye on that going forward
 const server = spdy.createServer({
     key: fs.readFileSync(path.resolve(__dirname, '../', 'certs/', 'key.pem')),
     cert: fs.readFileSync(path.resolve(__dirname, '../', 'certs/', 'fullchain.pem')),
 }, app)
 
+// Apply some useful plugins like helmet (security) and bodyParser (post param decoding)
 app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use('/service-worker.js', express.static(path.resolve(__dirname, '../dist/service-worker.js')))
+//
+// app.use('/service-worker.js', express.static(path.resolve(__dirname, '../dist/service-worker.js')))
 
-app.use('/', expressStaticGzip(path.resolve(__dirname, 'dist'), {
+app.use('/', expressStaticGzip(path.resolve(__dirname, '../', 'public'), {
     enableBrotli: true,
     indexFromEmptyFile: false,
 }))
@@ -29,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
     console.log('Running in development mode!')
     let render
 
-    require('./hmr_server.js')(app, (serverBundle, clientManifest, template) => {
+    require('./hmr.js')(app, (serverBundle, clientManifest, template) => {
         render = require('./ssr_renderer.js')(clientManifest, serverBundle, template)
     })
 
@@ -53,9 +57,9 @@ if (process.env.NODE_ENV === 'development') {
     // If in production, load the client and server files to be served
     console.log('Server is running in production mode')
 
-    const clientManifest = require('../dist/vue-ssr-client-manifest.json')
-    const serverBundlePath = '../dist/vue-ssr-server-bundle.json'
-    const template = fs.readFileSync(path.resolve('./dist/index.html'), 'utf8')
+    const clientManifest = require('../public/dist/vue-ssr-client-manifest.json')
+    const serverBundlePath = '../public/dist/vue-ssr-server-bundle.json'
+    const template = fs.readFileSync(path.resolve('./public/dist/index.html'), 'utf8')
     let serverBundle = require(serverBundlePath)
     let render = require('./ssr_renderer.js')(clientManifest, serverBundle, template)
 
@@ -72,9 +76,9 @@ if (process.env.NODE_ENV === 'development') {
     })
 }
 
-server.listen(port, (err) => {
+server.listen(frontendPort, (err) => {
     if (err) {
         throw err
     }
-    console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${frontendPort}`)
 })

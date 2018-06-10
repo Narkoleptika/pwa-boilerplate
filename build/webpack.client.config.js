@@ -13,7 +13,6 @@ const config = Object.assign({}, base, {
         vendor: ['vue', 'vuex', 'vue-router'],
     },
     plugins: (base.plugins || []).concat([
-        // new ExtractTextPlugin('styles.css'),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
             'process.env.VUE_ENV': '"client"',
@@ -68,9 +67,7 @@ if (isProduction) {
     )
 } else {
     // Development mode, so do dev stuff
-    // const ExtractTextPlugin = require('extract-text-webpack-plugin')
     config.plugins.push(
-        // new ExtractTextPlugin('styles.css'),
         new webpack.NoEmitOnErrorsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Client Build',

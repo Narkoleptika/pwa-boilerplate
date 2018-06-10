@@ -4,7 +4,7 @@ import App from './layouts/app.vue'
 import createStore from './store.js'
 import createRouter from './routes.js'
 import meta from './utils/meta.js'
-const siteName = 'My Site'
+import {siteName} from '../config.js'
 
 Vue.mixin(meta(siteName))
 

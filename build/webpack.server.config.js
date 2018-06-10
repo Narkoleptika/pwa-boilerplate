@@ -25,8 +25,6 @@ const config = Object.assign({}, base, {
 
 if (!isProduction) {
     config.plugins.push(
-        // new ExtractTextPlugin('styles.css'),
-        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Server Build',
