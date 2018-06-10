@@ -33,7 +33,22 @@ let config = {
             },
             {
                 test: /\.less$/,
-                use: ['vue-style-loader', 'css-loader', 'less-loader'],
+                use: [
+                    'vue-style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {minimize: isProduction, sourceMap: !isProduction},
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [require('autoprefixer')({
+                                browsers: ['> 1%', 'last 2 versions'],
+                            })],
+                        },
+                    },
+                    'less-loader',
+                ],
             },
         ],
     },
