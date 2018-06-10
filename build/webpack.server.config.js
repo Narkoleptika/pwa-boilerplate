@@ -24,10 +24,10 @@ const config = Object.assign({}, base, {
 })
 
 if (!isProduction) {
+    // In development notify if the build fails
     config.plugins.push(
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Server Build',
-            logo: path.resolve('./img/favicon.png'),
             suppressSuccess: true,
         })
     )

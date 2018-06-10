@@ -13,9 +13,6 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 let config = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    entry: {
-        vendor: ['vue', 'vuex', 'vue-router'],
-    },
     output: {
         path: path.resolve(__dirname, '../', 'public', 'dist'),
         publicPath: '/dist/',

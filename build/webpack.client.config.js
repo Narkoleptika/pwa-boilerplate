@@ -10,7 +10,6 @@ const isProduction = process.env.NODE_ENV === 'production'
 const config = Object.assign({}, base, {
     entry: {
         app: './client/entry_client.js',
-        vendor: ['vue', 'vuex', 'vue-router'],
     },
     plugins: (base.plugins || []).concat([
         new webpack.DefinePlugin({
@@ -33,6 +32,19 @@ const config = Object.assign({}, base, {
 })
 
 if (isProduction) {
+    // This automatically takes care of vendor splitting
+    config.optimization.splitChunks = {
+        cacheGroups: {
+            vendor: {
+                test: /node_modules/,
+                chunks: 'initial',
+                name: 'vendor',
+                enforce: true,
+            },
+        },
+    }
+
+    // Add Compression plugins and service worker caching
     config.plugins.push(
         new CompressionPlugin({
             asset: '[path].gz[query]',
@@ -62,11 +74,13 @@ if (isProduction) {
                 'dist/img/**.*',
                 'dist/**.js',
             ],
+            // Don't allow the service worker to try to cache google analytics or your tracking will stop working
+            // Disable any other scripts you don't want cached here as well
             staticFileGlobsIgnorePatterns: [/google-analytics.com/],
         })
     )
 } else {
-    // Development mode, so do dev stuff
+    // In development notify if the build fails
     config.plugins.push(
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Client Build',
