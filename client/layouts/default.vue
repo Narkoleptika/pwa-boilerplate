@@ -1,8 +1,10 @@
 <template>
     <div class="wrapper default">
-        <error></error>
+        <main>
+            <error></error>
 
-        <router-view></router-view>
+            <router-view></router-view>
+        </main>
     </div>
 </template>
 
@@ -12,6 +14,6 @@ import error from '../components/error.vue'
 export default {
     components: {
         error,
-    }
+    },
 }
 </script>

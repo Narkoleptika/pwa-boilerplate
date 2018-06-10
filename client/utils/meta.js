@@ -2,7 +2,7 @@ export default (siteName) => {
     /**
      * Get meta from a vue instance
      * @param  {Object} vm  A vue instance (I think)
-     * @return {[type]}     I'm not really sure
+     * @return {Boolean}     I'm not really sure
      */
     function getMeta(vm) {
         const {meta} = vm.$options

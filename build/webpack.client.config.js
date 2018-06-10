@@ -68,7 +68,6 @@ if (isProduction) {
 } else {
     // Development mode, so do dev stuff
     config.plugins.push(
-        new webpack.NoEmitOnErrorsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Client Build',
             suppressSuccess: true,

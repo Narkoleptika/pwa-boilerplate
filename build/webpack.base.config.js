@@ -4,6 +4,7 @@ const webpack = require('webpack')
 // Core Deps required for packing
 const HTMLPlugin = require('html-webpack-plugin')
 const {VueLoaderPlugin} = require('vue-loader')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 // Dev tools
 const Visualizer = require('webpack-visualizer-plugin')
@@ -61,15 +62,14 @@ let config = {
                 collapseWhitespace: isProduction,
             },
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
     ],
     optimization: {},
 }
 
 if (process.env.NODE_ENV === 'production') {
-    config.optimization.minimize = true
     config.plugins.push(
         new Visualizer({filename: '../stats.html'}),
+        new MinifyPlugin(),
     )
 } else {
     config.devtool = 'cheap-module-eval-source-map'

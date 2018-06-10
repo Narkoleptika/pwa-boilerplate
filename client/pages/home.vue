@@ -1,6 +1,6 @@
 <template>
     <div>
-        Home
+        <h1>Home</h1>
 
         <div class="foo">
             Bar
@@ -20,15 +20,6 @@ export default {
             description: 'A nice breif site description',
         }
     },
-    data() {
-        return {
-        }
-    },
-    mounted() {
-        setTimeout(() => {
-            this.$store.dispatch('showError', 'test')
-        }, 1000)
-    },
 }
 </script>
 
@@ -36,14 +27,14 @@ export default {
 @import '../styles/mixins.less';
 
 .foo {
-    color: blue;
+    // color: blue;
 
     .desktop({
-        color: red;
+        color: #333333;
     });
 
     .mobile({
-        background-color: #f00;
+        color: #330000;
     });
 }
 

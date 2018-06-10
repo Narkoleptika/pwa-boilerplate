@@ -25,7 +25,6 @@ const config = Object.assign({}, base, {
 
 if (!isProduction) {
     config.plugins.push(
-        new webpack.NoEmitOnErrorsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Server Build',
             logo: path.resolve('./img/favicon.png'),
