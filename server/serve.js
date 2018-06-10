@@ -20,8 +20,8 @@ app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-//
-// app.use('/service-worker.js', express.static(path.resolve(__dirname, '../dist/service-worker.js')))
+// Service workers should be loaded from / instead of a directory like /dist/
+app.use('/service-worker.js', express.static(path.resolve(__dirname, '../public/dist/service-worker.js')))
 
 app.use('/', expressStaticGzip(path.resolve(__dirname, '../', 'public'), {
     enableBrotli: true,
